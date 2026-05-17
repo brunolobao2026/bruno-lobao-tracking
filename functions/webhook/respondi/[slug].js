@@ -23,7 +23,19 @@ export async function onRequestGet(context) {
   const { env, params } = context;
   const slugFailure = guardSlug(params.slug, env.RESPONDI_WEBHOOK_SLUG);
   if (slugFailure) return slugFailure;
-  return new Response(JSON.stringify({ ok: true }), {
+  return new Response(JSON.stringify({
+    ok: true,
+    _debug: {
+      has_meta_pixel_id:    !!env.META_PIXEL_ID,
+      has_meta_token:       !!env.META_ACCESS_TOKEN,
+      has_ga4_id:           !!env.GA4_MEASUREMENT_ID,
+      has_ga4_secret:       !!env.GA4_API_SECRET,
+      has_respondi_slug:    !!env.RESPONDI_WEBHOOK_SLUG,
+      has_respondi_score:   !!env.RESPONDI_MIN_SCORE,
+      has_clint_url:        !!env.CLINT_WEBHOOK_URL,
+      has_dash_key:         !!env.DASH_KEY,
+    },
+  }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
   });
