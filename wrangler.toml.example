@@ -49,4 +49,8 @@ database_id = "__REPLACE_ME_DB_ID__"
 #   EDUZZ_WEBHOOK_SLUG      UUID v4 in URL path (generate per recipient; see deploy-stack)
 #   HOTMART_WEBHOOK_SLUG    same pattern
 #   KIWIFY_WEBHOOK_SLUG     same pattern
+#   RESPONDI_WEBHOOK_SLUG   same pattern — gates /webhook/respondi/<slug>
+#   RESPONDI_MIN_SCORE      Minimum quiz score to fire RespondiConversion (MQL) event;
+#                           if unset, RespondiConversion is never fired
+#   CLINT_WEBHOOK_URL       Full URL of your Clint CRM webhook (optional; omit to skip)
 # ---------------------------------------------------------------------------

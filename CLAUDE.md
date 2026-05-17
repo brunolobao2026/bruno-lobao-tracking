@@ -162,6 +162,7 @@ live under `.claude/skills/<name>/SKILL.md`.
 | Eduzz-specific notes | `docs/platforms/eduzz.md` |
 | Hotmart-specific notes | `docs/platforms/hotmart.md` |
 | Kiwify-specific notes | `docs/platforms/kiwify.md` |
+| Respondi-specific notes | `docs/platforms/respondi.md` |
 | Adding a new sales platform | `docs/platforms/_template.md` |
 | Setting up Meta Ads spend sync via external cron | `docs/ad-spend-sync.md` |
 
@@ -178,3 +179,4 @@ These have sensible defaults. Change them only if you know why.
 | Which sales platforms are active | Eduzz / Hotmart / Kiwify all built in | A platform goes live once its `<PLATFORM>_WEBHOOK_SLUG` env var is set. Recipients paste the full `/webhook/<platform>/<slug>` URL into the platform's dashboard; wrong slug = 404 |
 | Dashboard auth | Query param `?key=<DASH_KEY>` | Rotate by changing the env var; no code change |
 | Ad-spend sync | Off until recipient configures Meta Ads cron (see `docs/ad-spend-sync.md`) | Set `META_ADS_ACCESS_TOKEN`, `META_ADS_ACCOUNT_ID`, `SYNC_SECRET` and schedule an external cron to hit `/api/sync/meta-ads` hourly |
+| Respondi MQL threshold | **No default — must be set per client.** Always ask the client: "Qual a pontuação mínima do quiz para considerar o lead qualificado (MQL)?" before deploying. | Set `RESPONDI_MIN_SCORE` to the number the client provides. If unset, `RespondiConversion` is never fired. If the client doesn't use Respondi, leave unset. |
