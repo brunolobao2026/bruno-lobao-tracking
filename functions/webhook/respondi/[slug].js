@@ -130,7 +130,7 @@ export async function onRequestPost(context) {
 
     // --- Fan out ---
     const results = await Promise.allSettled([
-      sendToMeta({ ...metaArgs, eventName: 'Lead', eventId }),
+      Promise.resolve({ skipped: 'Lead handled by browser pixel', payload: null, response: null }),
       fireConversion
         ? sendToMeta({ ...metaArgs, eventName: 'RespondiConversion', eventId: convEventId })
         : Promise.resolve({ skipped: `score ${score} below min ${minScore}`, payload: null, response: null }),
